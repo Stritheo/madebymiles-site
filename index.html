@@ -4,26 +4,30 @@
   <meta charset="UTF-8" />
   <title>Made by Miles – Miles Sowden</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Miles Sowden – executive leader helping insurers and communities create clarity, better customer outcomes and smarter use of data & AI." />
+  <!-- Keep search engines out while we refine -->
+  <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Optional Google Fonts (can remove if you prefer system fonts) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Typography: elegant serif + neutral sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #f4d8d9;          /* blush base */
-      --bg-light: #f8e7e8;
-      --text: #2b2626;
-      --muted: #6b6464;
-      --accent: #222222;      /* almost black */
-      --card-bg: rgba(255,255,255,0.8);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 18px 40px rgba(0,0,0,0.08);
-      --max-width: 960px;
+      /* Palette: warm, architectural, understated */
+      --bg: #f4efe9;          /* warm off-white */
+      --bg-alt: #f0e7dd;      /* subtle contrast panels */
+      --ink: #1f1f1f;         /* primary text */
+      --muted: #6f6a64;       /* secondary text */
+      --accent: #35302a;      /* buttons, key lines */
+      --line: #ddd1c3;        /* hairline rules */
+      --pill-bg: #e4d7c7;
+
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow-soft: 0 26px 60px rgba(0, 0, 0, 0.08);
+      --max-width: 1040px;
     }
 
     * {
@@ -32,91 +36,193 @@
       padding: 0;
     }
 
+    html, body {
+      height: 100%;
+    }
+
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, var(--bg-light), var(--bg));
-      color: var(--text);
+      background:
+        radial-gradient(circle at top left, #f8f2ea 0, transparent 55%),
+        radial-gradient(circle at bottom right, #e8dfd3 0, #f4efe9 60%);
+      color: var(--ink);
       -webkit-font-smoothing: antialiased;
-      padding: 16px;
+      padding: 24px 16px 40px;
+      display: flex;
+      justify-content: center;
     }
 
     main {
       max-width: var(--max-width);
-      margin: 0 auto 64px auto;
+      width: 100%;
+      background: rgba(244, 239, 233, 0.96);
+      border-radius: 32px;
+      border: 1px solid rgba(221, 209, 195, 0.8);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 16px 24px;
+      backdrop-filter: blur(18px);
     }
 
+    @media (min-width: 900px) {
+      body {
+        padding: 40px;
+      }
+      main {
+        padding: 28px 32px 32px;
+      }
+    }
+
+    /* Top frame */
     header {
-      padding: 16px 0 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
+      gap: 16px;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .logo-text {
       font-family: "Playfair Display", serif;
       font-size: 18px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      text-rendering: geometricPrecision;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 16px;
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
+    .brand-subline {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
       color: var(--muted);
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    .nav-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-inline a {
+      text-decoration: none;
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-inline a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-inline a:hover::after {
+      width: 100%;
+    }
+
+    /* Layout body: hero + content */
+    .viewport-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 900px) {
+      .viewport-grid {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+        align-items: flex-start;
+      }
     }
 
     /* Hero */
     .hero {
-      margin-top: 8px;
-      padding: 28px 20px 24px;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(248,231,232,0.95));
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      grid-template-columns: minmax(0, 3fr);
-      gap: 20px;
+      padding-right: 4px;
     }
 
-    .hero-text h1 {
+    .hero-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-name {
       font-family: "Playfair Display", serif;
       font-size: 32px;
+      line-height: 1.1;
       margin-bottom: 8px;
     }
 
-    .hero-text p.lead {
-      font-size: 16px;
+    @media (min-width: 900px) {
+      .hero-name {
+        font-size: 40px;
+      }
+    }
+
+    .hero-tagline {
+      font-size: 15px;
       line-height: 1.6;
       color: var(--muted);
       margin-bottom: 14px;
+      max-width: 520px;
     }
 
-    .hero-bullets {
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .badge-pill {
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(204, 189, 171, 0.9);
+      background: rgba(246, 239, 231, 0.9);
+      color: var(--muted);
+    }
+
+    .hero-points {
       list-style: none;
       margin-bottom: 18px;
     }
 
-    .hero-bullets li {
-      font-size: 14px;
-      line-height: 1.6;
+    .hero-points li {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink);
+      padding-left: 14px;
       position: relative;
-      padding-left: 16px;
-      color: var(--text);
+      max-width: 540px;
     }
 
-    .hero-bullets li::before {
-      content: "•";
+    .hero-points li::before {
+      content: "";
       position: absolute;
       left: 0;
-      color: var(--muted);
+      top: 0.8em;
+      width: 6px;
+      height: 1px;
+      background: var(--line);
     }
 
     .hero-actions {
@@ -130,8 +236,8 @@
       background: var(--accent);
       color: #fff;
       border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 14px;
+      padding: 9px 18px;
+      font-size: 13px;
       border: none;
       cursor: pointer;
       text-decoration: none;
@@ -144,40 +250,158 @@
       font-size: 16px;
     }
 
-    .btn-secondary {
-      font-size: 14px;
+    .btn-ghost {
+      font-size: 13px;
       color: var(--muted);
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .hero-photo {
+    .btn-ghost span {
+      font-size: 14px;
+    }
+
+    /* Side column: portrait + quick facts */
+    .side-column {
+      border-left: 1px solid var(--line);
+      padding-left: 18px;
+      margin-left: -2px;
+    }
+
+    @media (max-width: 899px) {
+      .side-column {
+        border-left: none;
+        border-top: 1px solid var(--line);
+        padding-left: 0;
+        margin-left: 0;
+        padding-top: 16px;
+      }
+    }
+
+    .portrait-wrap {
       display: flex;
-      justify-content: flex-start;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
     }
 
-    .hero-photo img {
-      width: 120px;
-      height: 120px;
-      border-radius: 28px;
+    .portrait-frame {
+      width: 92px;
+      height: 92px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e5dbcf, #f6efe7);
+      padding: 3px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    }
+
+    .portrait-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #d4c8b7;
+    }
+
+    .portrait-inner img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      box-shadow: var(--shadow-soft);
+      display: block;
+    }
+
+    .side-meta {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 6px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 10px;
+      opacity: 0.7;
+    }
+
+    .meta-value {
+      font-size: 12px;
+    }
+
+    .side-note {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .side-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .side-links a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .side-links a:hover {
+      border-bottom-color: var(--accent);
     }
 
     /* Sections */
     section {
-      margin-top: 32px;
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 24px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+      align-items: baseline;
     }
 
     section h2 {
       font-family: "Playfair Display", serif;
-      font-size: 22px;
-      margin-bottom: 8px;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    section p.section-intro {
+    .section-tagline {
+      font-size: 12px;
+      color: var(--muted);
+      max-width: 320px;
+      text-align: right;
+    }
+
+    .section-intro {
       font-size: 14px;
       color: var(--muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       max-width: 640px;
     }
 
@@ -187,65 +411,92 @@
       gap: 18px;
     }
 
+    @media (min-width: 900px) {
+      .two-column {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+      }
+    }
+
     .body-text p {
       font-size: 14px;
       line-height: 1.7;
-      color: var(--text);
+      color: var(--ink);
       margin-bottom: 10px;
+    }
+
+    .body-text p:last-child {
+      margin-bottom: 0;
     }
 
     .highlight {
       font-size: 13px;
       color: var(--muted);
       font-style: italic;
+      background: rgba(240, 231, 221, 0.6);
+      border-radius: 14px;
+      padding: 10px 12px;
     }
 
-    /* Cards */
+    /* Cards grid */
     .card-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       gap: 14px;
-      margin-top: 8px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 900px) {
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .card {
-      background: var(--card-bg);
+      background: rgba(250, 245, 238, 0.94);
       border-radius: var(--radius-md);
       padding: 14px 14px 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-      backdrop-filter: blur(12px);
+      border: 1px solid rgba(221, 209, 195, 0.7);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
     }
 
-    .card h3 {
-      font-size: 16px;
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
       margin-bottom: 6px;
     }
 
     .card span.tag {
       display: inline-block;
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
       color: var(--muted);
-      margin-bottom: 6px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
     }
 
     .card p {
       font-size: 13px;
       line-height: 1.6;
-      color: var(--text);
+      color: var(--ink);
       margin-bottom: 6px;
     }
 
     .card ul {
-      padding-left: 16px;
-      margin-top: 4px;
+      padding-left: 14px;
+      margin-top: 2px;
     }
 
     .card ul li {
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.5;
       color: var(--muted);
+      margin-bottom: 2px;
     }
 
     /* Contact */
@@ -254,115 +505,146 @@
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .contact-links a {
       color: var(--accent);
       text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
     }
 
     .contact-links a:hover {
-      text-decoration: underline;
+      border-bottom-color: var(--accent);
     }
 
     footer {
-      max-width: var(--max-width);
-      margin: 0 auto 16px;
-      font-size: 12px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 11px;
       color: var(--muted);
-      text-align: center;
-    }
-
-    /* Larger screens */
-    @media (min-width: 720px) {
-      body {
-        padding: 32px;
-      }
-
-      .hero {
-        grid-template-columns: minmax(0, 2.2fr) auto;
-        align-items: center;
-        padding: 32px 28px;
-      }
-
-      .hero-text h1 {
-        font-size: 40px;
-      }
-
-      .hero-photo img {
-        width: 150px;
-        height: 150px;
-      }
-
-      .two-column {
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
-      }
-
-      .card-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
     }
   </style>
 </head>
 <body>
   <main>
-    <!-- Top nav -->
+    <!-- Top frame -->
     <header>
-      <div class="logo-text">Made by Miles</div>
-      <nav class="nav-links">
+      <div class="brand-block">
+        <div class="logo-text">Made by Miles</div>
+        <div class="brand-subline">Human creativity · Data · AI</div>
+      </div>
+      <nav class="nav-inline">
         <a href="#about">About</a>
+        <a href="#focus">Focus</a>
         <a href="#work">Work</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Miles Sowden</h1>
-        <p class="lead">
+    <!-- Hero + side column -->
+    <div class="viewport-grid">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-label">Executive | Insurance · Data · AI</div>
+        <h1 id="hero-title" class="hero-name">Miles Sowden</h1>
+        <p class="hero-tagline">
+          <!-- EDIT HERE -->
           Executive leader helping insurers and communities create clarity, better customer outcomes, and smarter use of data &amp; AI.
         </p>
-        <ul class="hero-bullets">
+
+        <div class="hero-badges">
+          <!-- EDIT HERE -->
+          <span class="badge-pill">Insurance &amp; banking</span>
+          <span class="badge-pill">Transformation &amp; culture</span>
+          <span class="badge-pill">Data, digital &amp; AI</span>
+        </div>
+
+        <ul class="hero-points">
           <li><!-- EDIT HERE -->Over 20 years leading transformation across Suncorp, Westpac, Commonwealth Bank, Hollard and SCI.</li>
           <li><!-- EDIT HERE -->Known for improving customer experience at a lower unit cost through digital and AI-led change.</li>
-          <li><!-- EDIT HERE -->Comfortable in complexity – from Royal Commissions to rebuilds of products, platforms and culture.</li>
+          <li><!-- EDIT HERE -->Calm in complex environments – from Royal Commissions to rebuilds of products, platforms and culture.</li>
         </ul>
+
         <div class="hero-actions">
           <a href="#work" class="btn-primary">
             View selected work <span>↘</span>
           </a>
-          <a href="#contact" class="btn-secondary">Connect on LinkedIn</a>
+          <a href="#contact" class="btn-ghost">
+            Connect on LinkedIn <span>↗</span>
+          </a>
         </div>
-      </div>
-      <div class="hero-photo">
-        <!-- EDIT image src -->
-        <img src="headshot.jpg" alt="Photo of Miles Sowden" />
-      </div>
-    </section>
+      </section>
+
+      <aside class="side-column" aria-label="Profile summary">
+        <div class="portrait-wrap">
+          <div class="portrait-frame">
+            <div class="portrait-inner">
+              <!-- EDIT image src -->
+              <img src="headshot.jpg" alt="Portrait of Miles Sowden" />
+            </div>
+          </div>
+          <div class="side-meta">
+            <div class="meta-row">
+              <span class="meta-label">Location</span>
+              <span class="meta-value">Sydney, Australia</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Current focus</span>
+              <span class="meta-value">Data, technology &amp; AI for strata communities</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Availability</span>
+              <span class="meta-value">Open to executive &amp; board conversations</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="side-note">
+          <!-- EDIT HERE -->
+          I work at the intersection of strategy, technology and people – helping insurers modernise how they serve customers, brokers and communities.
+        </p>
+
+        <div class="side-links">
+          <!-- EDIT HERE -->
+          <a href="mailto:you@madebymiles.ai">Email</a>
+          <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/your-github" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </aside>
+    </div>
 
     <!-- About -->
     <section id="about">
-      <h2>About Miles</h2>
+      <div class="section-header">
+        <h2>About</h2>
+        <p class="section-tagline">A short overview you can keep current as your roles and focus evolve.</p>
+      </div>
       <p class="section-intro">
-        A short overview you can keep up to date as your roles and focus evolve.
+        <!-- EDIT HERE -->
+        I work with Boards and executives to formulate and deliver strategies that transform insurers by improving the customer experience at a lower unit cost.
       </p>
       <div class="two-column">
         <div class="body-text">
           <p><!-- EDIT HERE -->
-            I work with Boards and executives to formulate and deliver strategies that transform insurers by improving the customer experience at a lower unit cost.
-          </p>
-          <p><!-- EDIT HERE -->
             Over the past two decades I’ve led teams of up to 700 people through mergers, divestments, platform migrations and regulatory reforms across Suncorp, Westpac, Commonwealth Bank, Hollard and Strata Community Insurance.
           </p>
           <p><!-- EDIT HERE -->
-            I lead with accountability, care and purpose to create lasting value through performance, trust and delivering customer outcomes. Lately my focus has been on using data and agentic AI to unlock better decisions for customers, communities and insurers.
+            I’m most effective where there is complexity to navigate – balancing customer, community, regulatory and shareholder expectations while keeping teams focused on clear outcomes.
+          </p>
+          <p><!-- EDIT HERE -->
+            Lately my focus has been on using modern data platforms and agentic AI to help underwriters, brokers and leaders make better decisions with less friction.
           </p>
         </div>
         <div class="body-text">
           <p class="highlight">
+            <!-- EDIT HERE -->
             Outside work I’m a husband, dad, learner and maker – usually experimenting with AI, sketching new product ideas or planning the next family adventure.
           </p>
         </div>
@@ -371,44 +653,64 @@
 
     <!-- Focus areas -->
     <section id="focus">
-      <h2>Focus areas</h2>
-      <p class="section-intro">
-        Themes that run through most of my work.
-      </p>
+      <div class="section-header">
+        <h2>Focus Areas</h2>
+        <p class="section-tagline">Patterns that show up across the organisations and teams I’ve led.</p>
+      </div>
       <div class="card-grid">
         <article class="card">
-          <span class="tag">Transformation</span>
+          <div class="card-header-row">
+            <span class="tag">Transformation</span>
+          </div>
           <h3>Leadership in complex environments</h3>
           <p><!-- EDIT HERE -->
             Bringing clarity, pace and calm execution to organisations navigating disruption, regulation and restructuring.
           </p>
           <ul>
             <li>Enterprise-wide change across products, platforms and operating models.</li>
-            <li>Clear metrics, simple governance and honest communication.</li>
+            <li>Simple governance, clear metrics and honest communication.</li>
           </ul>
         </article>
 
         <article class="card">
-          <span class="tag">Data &amp; AI</span>
+          <div class="card-header-row">
+            <span class="tag">Data &amp; AI</span>
+          </div>
           <h3>Digital, data and agentic AI</h3>
           <p><!-- EDIT HERE -->
             Applying modern data platforms and AI to underwriting, pricing, distribution and claims while keeping people at the centre.
           </p>
           <ul>
-            <li>Building practical AI assistants for underwriters and leaders.</li>
-            <li>Focusing on safe, explainable and value-creating AI use cases.</li>
+            <li>Practical AI assistants for underwriters and leaders.</li>
+            <li>Focus on safe, explainable and value-creating use cases.</li>
           </ul>
         </article>
 
         <article class="card">
-          <span class="tag">Culture</span>
+          <div class="card-header-row">
+            <span class="tag">Culture</span>
+          </div>
           <h3>Purpose-led, accountable teams</h3>
           <p><!-- EDIT HERE -->
             Creating environments where people understand the “why”, own outcomes and feel supported to grow.
           </p>
           <ul>
             <li>Blending performance, wellbeing and psychological safety.</li>
-            <li>Known for low-ego collaboration and clear expectations.</li>
+            <li>Low-ego collaboration with clear expectations.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-header-row">
+            <span class="tag">Design</span>
+          </div>
+          <h3>Form, function and simplicity</h3>
+          <p><!-- EDIT HERE -->
+            Designing operating models, products and experiences that feel considered – simple on the surface, robust underneath.
+          </p>
+          <ul>
+            <li>Architectures that balance resilience with efficiency.</li>
+            <li>Aesthetic, human-centred experiences for staff and customers.</li>
           </ul>
         </article>
       </div>
@@ -416,26 +718,30 @@
 
     <!-- Selected work / case studies -->
     <section id="work">
-      <h2>Selected work</h2>
-      <p class="section-intro">
-        A few examples of work I’ve led. Each can become a deeper case study later.
-      </p>
+      <div class="section-header">
+        <h2>Selected Work</h2>
+        <p class="section-tagline">Short case studies. Each can become a deeper story when you’re ready.</p>
+      </div>
       <div class="card-grid">
         <article class="card">
-          <span class="tag">Commonwealth Bank</span>
+          <div class="card-header-row">
+            <span class="tag">Commonwealth Bank</span>
+          </div>
           <h3>Leadership in complex environments</h3>
           <p><!-- EDIT HERE -->
-            Led CBA’s $1bn general insurer through a Royal Commission, the pandemic and regulatory reform while delivering digital transformation and divestment.
+            Led CBA’s general insurer through a Royal Commission, the pandemic and regulatory reform while delivering digital transformation and divestment.
           </p>
           <ul>
-            <li>Shifted sales from 20% to 70% digital.</li>
+            <li>Shifted sales from ~20% to ~70% digital.</li>
             <li>Introduced a new rating factor that cut premiums ~10% while improving loss ratio.</li>
-            <li>Only major insurer in the sector to avoid material regulatory action in that period.</li>
+            <li>One of the few major insurers to avoid material regulatory action in that period.</li>
           </ul>
         </article>
 
         <article class="card">
-          <span class="tag">Turnarounds</span>
+          <div class="card-header-row">
+            <span class="tag">Turnarounds</span>
+          </div>
           <h3>Three portfolios back to growth</h3>
           <p><!-- EDIT HERE -->
             Turned around three underperforming insurance portfolios by tightening risk selection, pricing and product design while improving customer outcomes.
@@ -447,10 +753,12 @@
         </article>
 
         <article class="card">
-          <span class="tag">Alliances</span>
+          <div class="card-header-row">
+            <span class="tag">Alliances</span>
+          </div>
           <h3>Strategic insurance partnerships</h3>
           <p><!-- EDIT HERE -->
-            Established long-term alliances balancing partner needs with commercial outcomes, including a 15-year strategic agreement for 1m customers.
+            Established long-term alliances balancing partner needs with commercial outcomes, including a 15-year strategic agreement for ~1m customers.
           </p>
           <ul>
             <li>Designed and implemented new operating divisions at scale.</li>
@@ -459,14 +767,16 @@
         </article>
 
         <article class="card">
-          <span class="tag">SCI</span>
+          <div class="card-header-row">
+            <span class="tag">SCI</span>
+          </div>
           <h3>Better, brighter strata communities</h3>
           <p><!-- EDIT HERE -->
             Currently leading data, technology and AI for a specialist strata insurer, building the foundations for smarter underwriting and customer experience.
           </p>
           <ul>
-            <li>Modern data and AI platform for strata building quality.</li>
-            <li>Customer and broker tools that make strata cover easier to understand.</li>
+            <li>Modern data and AI platform focused on building quality and risk.</li>
+            <li>Tools that make strata cover easier for brokers and communities to understand.</li>
           </ul>
         </article>
       </div>
@@ -474,13 +784,15 @@
 
     <!-- Current projects -->
     <section id="projects">
-      <h2>Current projects</h2>
-      <p class="section-intro">
-        A snapshot of the things I’m building and exploring right now.
-      </p>
+      <div class="section-header">
+        <h2>Current Projects</h2>
+        <p class="section-tagline">A snapshot of the things I’m building and exploring right now.</p>
+      </div>
       <div class="card-grid">
         <article class="card">
-          <span class="tag">Made by Miles</span>
+          <div class="card-header-row">
+            <span class="tag">Made by Miles</span>
+          </div>
           <h3>Human creativity, powered by AI</h3>
           <p><!-- EDIT HERE -->
             A studio for solving real-world problems with AI-enabled software – from underwriting assistants to personal focus tools.
@@ -488,18 +800,22 @@
         </article>
 
         <article class="card">
-          <span class="tag">AI in insurance</span>
+          <div class="card-header-row">
+            <span class="tag">AI in insurance</span>
+          </div>
           <h3>Practical AI agents for underwriters</h3>
           <p><!-- EDIT HERE -->
-            Building agents that help underwriters navigate policy documents, strata complexity and building data safely and efficiently.
+            Building agents that help underwriters and brokers navigate policy documents, strata complexity and building data safely and efficiently.
           </p>
         </article>
 
         <article class="card">
-          <span class="tag">Personal</span>
+          <div class="card-header-row">
+            <span class="tag">Personal</span>
+          </div>
           <h3>Learning, family &amp; community</h3>
           <p><!-- EDIT HERE -->
-            Ongoing experiments in fitness, learning, parenting and community – from mood tracking apps to Scouts projects and family travel planning.
+            Experiments in fitness, learning, parenting and community – from mood tracking apps to Scouts projects and family travel planning.
           </p>
         </article>
       </div>
@@ -507,9 +823,13 @@
 
     <!-- Contact -->
     <section id="contact">
-      <h2>Contact</h2>
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p class="section-tagline">The simplest way to start a conversation.</p>
+      </div>
       <p class="section-intro">
-        The easiest way to reach me is via LinkedIn, but you can also email me directly.
+        <!-- EDIT HERE -->
+        I’m always happy to compare notes on insurance, data, AI and leading teams through change – or simply to explore whether I can help.
       </p>
       <div class="contact-links">
         <!-- EDIT links -->
@@ -518,11 +838,12 @@
         <a href="https://github.com/your-github" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </section>
-  </main>
 
-  <footer>
-    © <span id="year"></span> Made by Miles. Crafted with curiosity, clarity and a little bit of AI.
-  </footer>
+    <footer>
+      <div>© <span id="year"></span> Made by Miles</div>
+      <div>Designed for clarity, not clutter.</div>
+    </footer>
+  </main>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
