@@ -1,0 +1,106 @@
+.intro {
+  margin-top: var(--space-6);
+  max-width: 800px;
+}
+
+/* Container query setup */
+.projectsContainer {
+  margin-top: var(--space-16);
+  container-type: inline-size;
+  container-name: projects;
+}
+
+.projectsGrid {
+  display: grid;
+  gap: var(--space-8);
+  /* Default: single column */
+  grid-template-columns: 1fr;
+}
+
+/* Container query: 2 columns when container is wider than 700px */
+@container projects (min-width: 700px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Container query: optimize spacing for larger containers */
+@container projects (min-width: 1000px) {
+  .projectCard {
+    padding: var(--space-12);
+  }
+}
+
+.projectCard {
+  padding: var(--space-10);
+  background: var(--color-bg-card);
+  border-radius: 0;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.projectCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-text-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-duration-medium)
+    var(--motion-ease-standard);
+}
+
+.projectCard:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+.projectCard:hover::before {
+  transform: scaleX(1);
+}
+
+.projectTitle {
+  margin-bottom: var(--space-6);
+}
+
+.projectDescription {
+  margin-bottom: var(--space-8);
+}
+
+.projectTags {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-bg-primary);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-base);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Fallback for browsers without container query support */
+@supports not (container-type: inline-size) {
+  .projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-8);
+  }
+}
+
+/* Traditional media queries as additional fallback */
+@media (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectCard {
+    padding: var(--space-8);
+  }
+}

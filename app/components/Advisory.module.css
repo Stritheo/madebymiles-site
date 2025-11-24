@@ -1,0 +1,73 @@
+.advisory {
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+}
+
+.title {
+  color: var(--color-text-inverse);
+}
+
+.intro {
+  margin-top: var(--space-6);
+  max-width: 800px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ctaGroup {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-top: var(--space-12);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-10);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all var(--motion-duration-short) var(--motion-ease-standard);
+  cursor: pointer;
+}
+
+.ctaPrimary {
+  background: var(--color-text-accent);
+  color: var(--color-text-inverse);
+}
+
+.ctaPrimary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.ctaPrimary:active {
+  transform: translateY(0);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--color-text-inverse);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.ctaSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.ctaSecondary:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .ctaGroup {
+    flex-direction: column;
+  }
+
+  .cta {
+    width: 100%;
+  }
+}

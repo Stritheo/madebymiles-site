@@ -1,0 +1,185 @@
+/**
+ * Motion System
+ * Subtle animations and interactions
+ * Respects prefers-reduced-motion
+ */
+
+/* Intersection Observer - Section reveal animations */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--motion-duration-medium) var(--motion-ease-standard),
+    transform var(--motion-duration-medium) var(--motion-ease-standard);
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered reveals for grid items */
+.reveal-stagger {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--motion-duration-medium) var(--motion-ease-standard),
+    transform var(--motion-duration-medium) var(--motion-ease-standard);
+}
+
+.reveal-stagger.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add delay for staggered items */
+.reveal-stagger:nth-child(1).is-visible {
+  transition-delay: 0ms;
+}
+.reveal-stagger:nth-child(2).is-visible {
+  transition-delay: 80ms;
+}
+.reveal-stagger:nth-child(3).is-visible {
+  transition-delay: 160ms;
+}
+.reveal-stagger:nth-child(4).is-visible {
+  transition-delay: 240ms;
+}
+.reveal-stagger:nth-child(5).is-visible {
+  transition-delay: 320ms;
+}
+.reveal-stagger:nth-child(6).is-visible {
+  transition-delay: 400ms;
+}
+
+/* Hover and focus states */
+.interactive-card {
+  transition: transform var(--motion-duration-short) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-short) var(--motion-ease-standard);
+}
+
+.interactive-card:hover {
+  transform: translateY(-4px);
+}
+
+.interactive-card:active {
+  transform: translateY(-2px);
+}
+
+/* Focus styles - visible and accessible */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-text-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-base);
+}
+
+/* Button interactions */
+.button-base {
+  transition: background-color var(--motion-duration-short)
+      var(--motion-ease-standard),
+    transform var(--motion-duration-short) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-short) var(--motion-ease-standard);
+}
+
+.button-base:hover {
+  transform: translateY(-1px);
+}
+
+.button-base:active {
+  transform: translateY(0);
+}
+
+/* Timeline node interactions */
+.timeline-node {
+  transition: transform var(--motion-duration-short) var(--motion-ease-spring),
+    opacity var(--motion-duration-short) var(--motion-ease-standard);
+}
+
+.timeline-node:hover,
+.timeline-node:focus-visible {
+  transform: scale(1.15);
+}
+
+.timeline-node:active {
+  transform: scale(1.05);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-section,
+  .reveal-stagger {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .interactive-card:hover,
+  .button-base:hover,
+  .timeline-node:hover,
+  .timeline-node:focus-visible {
+    transform: none;
+  }
+}
+
+/* Loading states */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade transitions */
+.fade-in {
+  animation: fadeIn var(--motion-duration-medium) var(--motion-ease-standard);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide transitions */
+.slide-up {
+  animation: slideUp var(--motion-duration-medium) var(--motion-ease-standard);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
