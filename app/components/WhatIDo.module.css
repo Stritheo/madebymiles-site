@@ -1,0 +1,70 @@
+.intro {
+  margin-top: var(--space-6);
+  max-width: 800px;
+}
+
+/* Container query setup */
+.capabilitiesContainer {
+  margin-top: var(--space-16);
+  container-type: inline-size;
+  container-name: capabilities;
+}
+
+.capabilitiesGrid {
+  display: grid;
+  gap: var(--space-6);
+  /* Default: single column for small containers */
+  grid-template-columns: 1fr;
+}
+
+/* Container query: 2 columns when container is wider than 600px */
+@container capabilities (min-width: 600px) {
+  .capabilitiesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Container query: optimize card padding for larger containers */
+@container capabilities (min-width: 900px) {
+  .capabilityCard {
+    padding: var(--space-12);
+  }
+}
+
+.capabilityCard {
+  padding: var(--space-10);
+  background: var(--color-bg-card);
+  border-left: 3px solid var(--color-text-accent);
+  border-radius: 0;
+  transition: transform var(--motion-duration-short) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-short) var(--motion-ease-standard);
+}
+
+.capabilityCard:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.capabilityCard h3 {
+  margin-bottom: var(--space-4);
+}
+
+/* Fallback for browsers without container query support */
+@supports not (container-type: inline-size) {
+  .capabilitiesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+/* Traditional media queries as additional fallback */
+@media (max-width: 768px) {
+  .capabilitiesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .capabilityCard {
+    padding: var(--space-8);
+  }
+}

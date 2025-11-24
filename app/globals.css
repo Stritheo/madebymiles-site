@@ -1,0 +1,164 @@
+/**
+ * Global Styles
+ * Import design tokens and motion system
+ */
+
+@import './lib/tokens.css';
+@import './lib/motion.css';
+
+/* Reset and base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-loose);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  min-height: 100vh;
+}
+
+/* Typography utilities */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: var(--font-size-6xl);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: var(--font-size-5xl);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-snug);
+}
+
+.body-lg {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-loose);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
+}
+
+.body-md {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-loose);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Container */
+.container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-12);
+}
+
+/* Section spacing */
+.section {
+  padding: var(--space-32) 0;
+}
+
+/* Responsive typography */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+
+  .display-xl {
+    font-size: var(--font-size-5xl);
+  }
+
+  .display-lg {
+    font-size: var(--font-size-4xl);
+  }
+
+  .display-md {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-20) 0;
+  }
+
+  .display-xl {
+    font-size: var(--font-size-4xl);
+  }
+
+  .display-lg {
+    font-size: var(--font-size-3xl);
+  }
+
+  .display-md {
+    font-size: var(--font-size-xl);
+  }
+
+  .body-lg {
+    font-size: var(--font-size-md);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--space-6);
+  }
+}
+
+/* Skip to main content (accessibility) */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  top: var(--space-4);
+  z-index: var(--z-tooltip);
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+.skip-to-main:focus {
+  left: var(--space-4);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--color-text-accent);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-text-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-base);
+}
